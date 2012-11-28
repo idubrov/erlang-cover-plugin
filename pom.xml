@@ -1,0 +1,139 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>1.491</version>
+    </parent>
+
+    <artifactId>erlang-cover</artifactId>
+    <packaging>hpi</packaging>
+    <version>0.1-SNAPSHOT</version>
+    <name>Jenkins Erlang Cover Plugin</name>
+    <url>http://wiki.jenkins-ci.org/display/JENKINS/Erlang+Cover+Plugin</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/idubrov/erlang-cover-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:idubrov/erlang-cover-plugin.git</developerConnection>
+        <url>https://github.com/idubrov/erlang-cover-plugin</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>stephenconnolly</id>
+            <name>Stephen Connolly</name>
+            <email>stephenconnolly@dev.java.net</email>
+        </developer>
+        <developer>
+            <id>manuel_carrasco</id>
+            <name>Manuel Carrasco Monino</name>
+            <email>manolo@apache</email>
+        </developer>
+        <developer>
+            <id>ssogabe</id>
+            <name>Seiji Sogabe</name>
+            <email>s.sogabe@gmail.com</email>
+        </developer>
+        <developer>
+            <id>idubrov</id>
+            <name>Ivan Dubrov</name>
+            <email>dubrov.ivan@gmail.com</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jenkins-ci.main</groupId>
+            <artifactId>maven-plugin</artifactId>
+            <scope>compile</scope>
+            <!-- Exclude a dependency that conflicts with easymock dependencies -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.sonatype.sisu.inject</groupId>
+                    <artifactId>cglib</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymockclassextension</artifactId>
+            <version>3.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>dashboard-view</artifactId>
+            <version>2.4</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.trove4j</groupId>
+            <artifactId>trove4j</artifactId>
+            <version>3.0.3</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.erlang.otp</groupId>
+            <artifactId>jinterface</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.0</version>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.12.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.3.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>  
+
